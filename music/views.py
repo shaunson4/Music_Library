@@ -21,8 +21,18 @@ def music_list(request):
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
+@api_view(['GET'])
+def music_detail(request, pk):
+    try:
+        music = Music.objects.get(pk=pk)
+    except Music.DoesNotExist:
+        return Response (status=status.HTTP_404_NOT_FOUND)
+
+    return Response(pk)
+
 # BELOW is what the above code COULD BE changed to in order to have a minimal way of coding the functionality
-# ABOVE we imported the status calls from the rest_framework in order to send the HTTP message requests as needed
+# ABOVE POST section we imported the status calls from the rest_framework in order to send the HTTP message requests as needed
 #   if request.method == 'GET':
 #         music = Music.objects.all()
 #         serializer = MusicSerializer(music, many=True)
