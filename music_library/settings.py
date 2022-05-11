@@ -36,7 +36,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
-    'music'
+    'music',
+    'django.shortcuts'
 ]
 
 MIDDLEWARE = [
